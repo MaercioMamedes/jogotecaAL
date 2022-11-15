@@ -1,5 +1,5 @@
 from main import app
-from models.games import Games
+from models import *
 from flask import render_template
 
 
