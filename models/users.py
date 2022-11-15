@@ -30,6 +30,7 @@ class Users(db.Model):
     def auth(self, password):
         """Método para autenticar senha do usuário"""
         password = bytes(password,'utf-8')
+        print('passou aqui')
 
         if bcrypt.checkpw(password, bytes(self.password_hash, 'utf-8')):
             return True

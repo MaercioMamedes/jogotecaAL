@@ -6,10 +6,11 @@ app.config.from_pyfile('config.py')
 
 db = SQLAlchemy(app)
 
-from views.index import *
-from views.login import *
-from views.authenticate import *
-from views.logout import *
+from views.core.index import *
+from views.user.login import *
+from views.user.authenticate import *
+from views.user.logout import *
+from views.user.userRegister import *
 
 """from views.index import index
 from views.login import login

@@ -5,7 +5,9 @@ from models.users import Users
 
 @app.route('/authenticate', methods=['POST',])
 def authenticate():
+    username = request.form['user']
     user = Users.query.filter_by(nickname=request.form['user']).first()
+    print(username)
     if user:
         if user.auth(request.form['password']):
             session['user_logged'] = user.nickname
