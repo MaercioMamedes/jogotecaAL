@@ -13,7 +13,7 @@ def user_register():
 
         if not check_equal_password_input(password, password_corfim):
             flash('Senha inválida', 'danger')
-            return render_template('userRegister.html')
+            return render_template('users/userRegister.html')
 
         else:
             user = Users.create(nickname,name,password)
@@ -22,7 +22,7 @@ def user_register():
 
             return redirect(url_for('index'))
 
-    return render_template('userRegister.html')
+    return render_template('users/userRegister.html')
 
 
 def check_equal_password_input(password, password_confirm):

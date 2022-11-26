@@ -10,7 +10,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><h1>Jogoteca</h1></a>
+    <a class="navbar-brand" href="{{ url_for('index') }}"><h1>Jogoteca</h1></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +22,13 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">CADASTRAR JOGO</a>
+          <a class="nav-link active" aria-current="page" href="{{ url_for('new_game') }}">CADASTRAR JOGO</a>
         </li>
 
         {% if 'user_logged' in session and session['user_logged'] != None %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">MEUS JOGOS</a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ url_for('user_update') }}">USUÁRIO LOGADO: <strong>{{ session['user_logged'] }}</strong></a>
@@ -34,6 +37,9 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{{ url_for('logout') }}">LOGOUT</a>
             </li>
+
+
+
         {% else %}
 
             <li class="nav-item">
@@ -44,8 +50,8 @@
 
       </ul>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="Digite o nome de um Jogo" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
       </form>
     </div>
   </div>

@@ -3,10 +3,10 @@
                <h1>Faça seu Cadastro</h1>
         <form method="POST" action="{{ url_for('user_register') }}">
             <input type="hidden" name="next-page" value="{{ next_page or url_for('index')}}">
-            <p><label>Nome de usuário:</label> <input class="form-control" type="text" name="name" required></p>
+            <p><label>Nome completo:</label> <input class="form-control" type="text" name="name" required></p>
             <p><label>Nickname:</label> <input class="form-control" type="text" name="user" required></p>
             <p><label>Senha:</label> <input class="form-control" type="password" name="password" required></p>
-            <p><label>Senha:</label> <input class="form-control" type="password" name="password-confirm" required></p>
+            <p><label>Confirme a senha:</label> <input class="form-control" type="password" name="password-confirm" required></p>
             <p><button class="btn btn-primary" type="submit">salvar</button></p>
         </form>
 {% endblock %}

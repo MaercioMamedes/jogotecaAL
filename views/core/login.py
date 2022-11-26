@@ -5,5 +5,5 @@ from models import *
 
 @app.route('/login')
 def login():
-    next_page = request.args.get('next-page')
-    return render_template('login.html', next_page=next_page)
+    next_page = request.args.get('next_page')
+    return render_template('core/login.html', next_page=next_page)
