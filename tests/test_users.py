@@ -4,7 +4,7 @@ from models.users import Users
 
 class TestUserMethods(TestCase):
     def setUp(self) -> None:
-        self.user_test = Users.create(nickname_user='mamedes01', name_user='mamedes', password='1234')
+        self.user_test = Users.create('mamedes01','mamedes','1234')
 
     def test_user_authenticate(self):
         input_password = '1234'

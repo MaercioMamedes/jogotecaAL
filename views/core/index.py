@@ -8,5 +8,8 @@ from flask import render_template
 
 @app.route('/')
 def index():
-    list_game = Games.query.order_by(Games.id)
+    try:
+        list_game = Games.query.order_by(Games.id)
+    except:
+        list_game = []
     return render_template('core/index.html', title='Jogos', games=list_game)

@@ -1,5 +1,7 @@
 from main import db
 import bcrypt
+from .usersGames import *
+from models.games import *
 
 
 class Users(db.Model):
@@ -16,9 +18,11 @@ class Users(db.Model):
     """Os atributos de um objeto Users, são otimizados, especialmente o password_hash. Quando o objeto é instaciando
     a partir do método stático Users.create"""
 
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nickname = db.Column(db.String(8), primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     password_hash = db.Column(db.String(100), nullable=False)
+    games = db.relationship('Games', secondary=users_games, backref='games_rep')
 
     def __repr__(self):
         return '<Name %r>' % self.name

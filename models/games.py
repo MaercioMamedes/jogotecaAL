@@ -1,9 +1,11 @@
 from main import db
 
+
 """Modelo da classe Game, define os atributos e seus métodos"""
 
 
 class Games(db.Model):
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(50), nullable=False)
     console = db.Column(db.String(50), nullable=False)
