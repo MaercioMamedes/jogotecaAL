@@ -15,6 +15,7 @@ def authenticate():
 
     if user is not None and user.auth(password):
         session['user_logged'] = user.nickname
+        session['is_adm'] = user.is_adm
         flash(user.nickname + ' logado com sucesso!', 'success')
         next_page = request.form['next-page']
 

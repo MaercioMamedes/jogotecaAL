@@ -7,7 +7,7 @@
                     <th>Categoria</th>
                     <th>Console</th>
 
-                {% if 'user_logged' in session and session['user_logged'] != None %}
+                {% if 'user_logged' in session and session['user_logged'] != None and session['is_adm'] == True %}
                     <th>Ação</th>
                 {% endif %}
 
@@ -20,7 +20,7 @@
                     <td>{{ game.category }}</td>
                     <td>{{ game.console }}</td>
 
-                    {% if 'user_logged' in session and session['user_logged'] != None %}
+                    {% if 'user_logged' in session and session['user_logged'] != None and session['is_adm'] == True %}
                     <td>
                         <a >Editar</a>
                         <a href="{{ url_for('delete_game', id_game=game.id) }}" >Excluir</a>

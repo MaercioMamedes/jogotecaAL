@@ -2,6 +2,7 @@ from main import db
 import bcrypt
 from .usersGames import *
 from models.games import *
+from datetime import datetime
 
 
 class Users(db.Model):
@@ -12,7 +13,8 @@ class Users(db.Model):
         password = bytes(password, 'utf-8')
         password_hash_user = bcrypt.hashpw(password, bcrypt.gensalt())
         password_hash_user = str(password_hash_user, 'utf-8')
-        user = Users(nickname=nickname_user, name=name_user, password_hash=password_hash_user)
+        created = datetime.now()
+        user = Users(nickname=nickname_user, name=name_user, password_hash=password_hash_user, created_on=created)
         return user
 
     """Os atributos de um objeto Users, são otimizados, especialmente o password_hash. Quando o objeto é instaciando
@@ -21,6 +23,8 @@ class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nickname = db.Column(db.String(20), primary_key=True)
     name = db.Column(db.String(20), nullable=False)
+    created_on = db.Column(db.DateTime(timezone=False))
+    is_adm = db.Column(db.Boolean())
     password_hash = db.Column(db.String(100), nullable=False)
     games = db.relationship('Games', secondary=users_games, lazy='subquery',
                             backref=db.backref('users', lazy=True),
