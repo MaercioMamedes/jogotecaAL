@@ -1,5 +1,5 @@
 from main import app, db
-from models import Games
+from models import Games, Users
 from flask import session, redirect, render_template, url_for, request
 
 
@@ -18,6 +18,13 @@ def new_game():
 
         game = Games(name=name, category=category, console=console)
         db.session.add(game)
+        db.session.commit()
+
+        username = session['user_logged']
+        user = Users.query.filter_by(nickname=username).first()
+        user.add_game(game)
+
+        db.session.add(user)
         db.session.commit()
 
         return redirect(url_for('index'))

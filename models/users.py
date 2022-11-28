@@ -19,10 +19,12 @@ class Users(db.Model):
     a partir do método stático Users.create"""
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nickname = db.Column(db.String(8), primary_key=True)
+    nickname = db.Column(db.String(20), primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     password_hash = db.Column(db.String(100), nullable=False)
-    games = db.relationship('Games', secondary=users_games, backref='games_rep')
+    games = db.relationship('Games', secondary=users_games, lazy='subquery',
+                            backref=db.backref('users', lazy=True),
+                            )
 
     def __repr__(self):
         return '<Name %r>' % self.name
@@ -39,3 +41,6 @@ class Users(db.Model):
             return True
         else:
             return False
+
+    def add_game(self, game):
+        self.games.append(game)

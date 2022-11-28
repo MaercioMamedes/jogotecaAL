@@ -27,7 +27,7 @@
 
         {% if 'user_logged' in session and session['user_logged'] != None %}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">MEUS JOGOS</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('my_games') }}">MEUS JOGOS</a>
             </li>
 
             <li class="nav-item">
