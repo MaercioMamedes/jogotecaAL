@@ -14,7 +14,11 @@ class Users(db.Model):
         password_hash_user = bcrypt.hashpw(password, bcrypt.gensalt())
         password_hash_user = str(password_hash_user, 'utf-8')
         created = datetime.now()
-        user = Users(nickname=nickname_user, name=name_user, password_hash=password_hash_user, created_on=created)
+        user = Users(nickname=nickname_user,
+                     name=name_user,
+                     password_hash=password_hash_user,
+                     created_on=created,
+                     quantity_games=0)
         return user
 
     """Os atributos de um objeto Users, são otimizados, especialmente o password_hash. Quando o objeto é instaciando
@@ -26,6 +30,7 @@ class Users(db.Model):
     created_on = db.Column(db.DateTime(timezone=False))
     is_adm = db.Column(db.Boolean())
     password_hash = db.Column(db.String(100), nullable=False)
+    quantity_games = db.Column(db.Integer)
     games = db.relationship('Games', secondary=users_games, lazy='subquery',
                             backref=db.backref('users', lazy=True),
                             )
@@ -48,3 +53,9 @@ class Users(db.Model):
 
     def add_game(self, game):
         self.games.append(game)
+        self.quantity_games = len(self.games)
+
+    def remove_game(self, game):
+        self.games.remove(game)
+        self.quantity_games = len(self.games)
+

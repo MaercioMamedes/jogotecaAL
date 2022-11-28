@@ -16,6 +16,7 @@ from views.core.login import *
 from views.core.authenticate import *
 from views.core.logout import *
 from views.core.my_games import *
+from views.core.index_users import *
 from views.user.userRegister import *
 from views.user.userUpdate import *
 from views.game.newGame import *

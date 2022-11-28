@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nome</th>
+                    <th>Cadastrado desde:</th>
+                    <th>Quantidade de Jogos</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.created_on }}</td>
+                    <td>{{ user.quantity_games }}</td>
+
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+{% endblock %}

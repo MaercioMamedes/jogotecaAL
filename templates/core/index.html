@@ -6,6 +6,7 @@
                     <th>Nome</th>
                     <th>Categoria</th>
                     <th>Console</th>
+                    <th>Cadastrado</th>
 
                 {% if 'user_logged' in session and session['user_logged'] != None and session['is_adm'] == True %}
                     <th>Ação</th>
@@ -19,6 +20,7 @@
                     <td>{{ game.name }}</td>
                     <td>{{ game.category }}</td>
                     <td>{{ game.console }}</td>
+                    <td>{{ game.created_on }} por {{ game.created_by }}</td>
 
                     {% if 'user_logged' in session and session['user_logged'] != None and session['is_adm'] == True %}
                     <td>
