@@ -16,11 +16,13 @@ from views.core.login import *
 from views.core.authenticate import *
 from views.core.logout import *
 from views.core.my_games import *
+from views.core.remove_game import *
 from views.core.index_users import *
 from views.user.userRegister import *
 from views.user.userUpdate import *
 from views.game.newGame import *
 from views.game.deleteGame import *
+from views.game.updateGame import *
 
 if __name__ == '__main__':
     app.run(debug=True)

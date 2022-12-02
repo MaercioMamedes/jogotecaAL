@@ -7,7 +7,7 @@ from models import Users
 def my_games():
     if 'user_logged' in session and session['user_logged'] is not None:
         username = session['user_logged']
-        user = Users.query.filter_by(nickname=username).first()
+        user = Users.query.filter_by(nickname=username).first_or_404()
 
         list_games = user.games
         print(list_games)

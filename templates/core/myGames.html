@@ -22,8 +22,8 @@
 
                     {% if 'user_logged' in session and session['user_logged'] != None %}
                     <td>
-                        <a >Editar</a>
-                        <a href="{{ url_for('delete_game', id_game=game.id) }}" >Excluir</a>
+                        <a href="{{ url_for('update_game', id_game=game.id) }}">Editar</a>
+                        <a href="{{ url_for('remove_game_from_portfolio', id_game=game.id) }}" >Remover</a>
                     </td>
                     {% endif %}
 

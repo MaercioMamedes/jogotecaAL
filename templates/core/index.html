@@ -24,7 +24,7 @@
 
                     {% if 'user_logged' in session and session['user_logged'] != None and session['is_adm'] == True %}
                     <td>
-                        <a >Editar</a>
+                        <a href="{{ url_for('update_game', id_game=game.id) }}">Editar</a>
                         <a href="{{ url_for('delete_game', id_game=game.id) }}" >Excluir</a>
                     </td>
                     {% endif %}
