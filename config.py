@@ -13,6 +13,8 @@ SQLALCHEMY_DATABASE_URI = \
 
 SECRET_KEY = 'rF1i52H8b5&!'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+UPLOAD_PATH = os.path.dirname(os.path.abspath(__file__)) + '/medias'
+
 
 """
 MYSQL_HOST = "localhost"
@@ -21,4 +23,4 @@ MYSQL_PASSWORD = ""
 MYSQL_UNIX_SOCKET = "/opt/lampp/var/mysql/mysql.sock"
 MYSQL_DB = "GameDataBase"
 MYSQL_PORT = 3306
-# UPLOAD_PATH = os.path.dirname(os.path.abspath(__file__)) + '/medias'"""
+# """

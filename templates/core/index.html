@@ -17,7 +17,7 @@
             <tbody>
                 {% for game in games %}
                 <tr>
-                    <td>{{ game.name }}</td>
+                    <td><a href="{{ url_for('game', id_game=game.id) }}">{{ game.name }}</a></td>
                     <td>{{ game.category }}</td>
                     <td>{{ game.console }}</td>
                     <td>{{ game.created_on }} por {{ game.created_by }}</td>

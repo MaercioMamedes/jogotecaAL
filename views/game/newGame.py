@@ -2,6 +2,7 @@ from main import app, db
 from models import Games, Users
 from flask import session, redirect, render_template, url_for, request
 from datetime import datetime
+import time
 
 
 @app.route('/novo-jogo', methods=['POST', 'GET'])
@@ -29,6 +30,15 @@ def new_game():
         db.session.add(game)
         user.add_game(game)
         db.session.add(user)
+        db.session.commit()
+
+        image_game = request.files['image']
+        upload_path = app.config['UPLOAD_PATH']
+        url_image = f'{upload_path}/capa-{game.id}-{time.time()}.jpg'
+        image_game.save(url_image)
+
+        game.url_image = url_image
+        db.session.add(game)
         db.session.commit()
 
         return redirect(url_for('index'))
