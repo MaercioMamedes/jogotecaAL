@@ -11,6 +11,7 @@ app.config.from_pyfile('config.py')
 """Instaciação do banco de dados da aplicação"""
 db = SQLAlchemy(app)
 
+""" Views core """
 from views.core.index import *
 from views.core.login import *
 from views.core.authenticate import *
@@ -18,8 +19,12 @@ from views.core.logout import *
 from views.core.my_games import *
 from views.core.remove_game import *
 from views.core.index_users import *
+
+""" Views User"""
 from views.user.userRegister import *
 from views.user.userUpdate import *
+
+"""Views Game"""
 from views.game.newGame import *
 from views.game.game import *
 from views.game.deleteGame import *

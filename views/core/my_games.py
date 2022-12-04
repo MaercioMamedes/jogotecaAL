@@ -3,6 +3,7 @@ from flask import render_template, session, redirect, url_for
 from models import Users
 
 
+"""View responsável por exibir jogos cadastrados no portfólio do usuário"""
 @app.route('/meus-jogos')
 def my_games():
     if 'user_logged' in session and session['user_logged'] is not None:

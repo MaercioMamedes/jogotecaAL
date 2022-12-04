@@ -52,10 +52,12 @@ class Users(db.Model):
             return False
 
     def add_game(self, game):
+        """Método para adicionar jogo no portfólio do usuário"""
         self.games.append(game)
         self.quantity_games = len(self.games)
 
     def remove_game(self, game):
+        """Método para remover jogo do portfólio do usuário, mas não remove do repositório da aplicação"""
         self.games.remove(game)
         self.quantity_games = len(self.games)
 

@@ -4,6 +4,8 @@ from models.games import Games
 from flask import session, redirect, url_for
 
 
+"""View responsável por remover jogo do portfólio do usuário"""
+# Rever arquitetura dessa view
 @app.route('/remover-jogo/<int:id_game>')
 def remove_game_from_portfolio(id_game):
     try:

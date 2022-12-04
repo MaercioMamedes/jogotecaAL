@@ -2,6 +2,7 @@ from flask import session, redirect, url_for, flash
 from main import app
 
 
+"""View de logout"""
 @app.route('/logout')
 def logout():
     if 'user_logged' in session or session['userlogged'] is not None:

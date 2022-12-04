@@ -3,8 +3,12 @@ from flask import request, redirect, url_for, render_template, flash
 from models.users import *
 
 
+"""View para cadastrar novo usuário"""
 @app.route('/cadastro', methods=['GET','POST'])
 def user_register():
+
+    # Fazer validação de formulários em outra dependência
+
     if request.method == 'POST':
         name = request.form['name']
         nickname = request.form['user']

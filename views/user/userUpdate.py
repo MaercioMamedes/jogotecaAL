@@ -3,6 +3,7 @@ from models.users import *
 from flask import render_template, session, redirect, url_for, flash, request
 
 
+"""view para atualizar dados do usuário"""
 @app.route('/atualizar-cadastro', methods=['GET','POST'])
 def user_update():
     if request.method == 'POST':
