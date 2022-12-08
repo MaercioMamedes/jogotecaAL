@@ -1,6 +1,7 @@
 from main import app, db
 from flask import request, redirect, url_for, render_template, flash
 from models.users import *
+from forms.userForm import UserForm
 
 
 """View para cadastrar novo usuário"""
@@ -10,10 +11,11 @@ def user_register():
     # Fazer validação de formulários em outra dependência
 
     if request.method == 'POST':
-        name = request.form['name']
-        nickname = request.form['user']
-        password = request.form['password']
-        password_corfim = request.form['password-confirm']
+        form = UserForm(request.form)
+        name = form.name.data
+        nickname = form.nickname.data
+        password = form.password.data
+        password_corfim = form.password_confirm.data
 
         if not check_equal_password_input(password, password_corfim):
             flash('Senha inválida', 'danger')
@@ -26,7 +28,8 @@ def user_register():
 
             return redirect(url_for('index'))
 
-    return render_template('users/userRegister.html')
+    form = UserForm()
+    return render_template('users/userRegister.html', form=form)
 
 
 def check_equal_password_input(password, password_confirm):

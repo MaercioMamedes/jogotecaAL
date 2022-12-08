@@ -2,14 +2,16 @@ from main import app, db
 from flask import request, session, flash, redirect, url_for, render_template
 from models.users import Users
 from werkzeug.exceptions import NotFound
+from forms.loginForm import LoginForm
 
 
 
 """View responsável pela autenticação de usuário"""
 @app.route('/authenticate', methods=['POST',])
 def authenticate():
-    username = request.form['user']
-    password = request.form['password']
+    form = LoginForm(request.form)
+    username = form.nickname.data
+    password = form.password.data
 
     try:
         user = Users.query.filter_by(nickname=username).first_or_404()

@@ -1,6 +1,7 @@
 from main import app, db
 from models import Games, Users
 from flask import session, redirect, render_template, url_for, request
+from forms.gameForm import GameForm
 from datetime import datetime
 import time
 
@@ -10,11 +11,13 @@ import time
 def new_game():
     if request.method == 'GET':
         if 'user_logged' in session and session['user_logged'] is not None:
-            return render_template('games/newGame.html', title='Novo Jogo')
+            form = GameForm()
+            return render_template('games/newGame.html', title='Novo Jogo', form=form)
         else:
             return redirect(url_for('login', next_page='new_game'))
 
     elif request.method == 'POST':
+
 
         # user identification
 
@@ -22,10 +25,11 @@ def new_game():
         user = Users.query.filter_by(nickname=username).first()
 
         # game identification
+        form = GameForm(request.form)
 
-        name = request.form['name']
-        category = request.form['category']
-        console = request.form['console']
+        name = form.name.data
+        category = form.category.data
+        console = form.category.data
         creted_by = user.name
         created = datetime.now()
 

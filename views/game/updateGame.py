@@ -2,6 +2,7 @@ from main import app, db
 from flask import redirect, url_for, render_template, request
 from models import Games
 from helpers import delete_image
+from forms.gameForm import GameForm
 import time
 
 
@@ -9,9 +10,14 @@ import time
 @app.route('/atualizar-jogo/<int:id_game>', methods=['POST','GET'])
 def update_game(id_game):
     if request.method == 'GET':
-        game = Games.query.filter_by(id=id_game).first_or_404()
-        print(game)
-        return render_template('games/updateGame.html', title='Atualizando o Jogo', game=game)
+        game = Games.query.filter_by(id=id_game).first_or_404() #tratar erro
+        form = GameForm()
+        form.name.data = game.name
+        form.category.data = game.category
+        form.console.data = game.console
+
+
+        return render_template('games/updateGame.html', title='Atualizando o Jogo', game=game, form=form)
 
     elif request.method == 'POST':
         # game identification
