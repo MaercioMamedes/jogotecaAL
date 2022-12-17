@@ -2,6 +2,7 @@ from main import app, db
 from flask import request, redirect, url_for, render_template, flash
 from models.users import *
 from forms.userForm import UserForm
+import time
 
 
 """View para cadastrar novo usuário"""
@@ -25,6 +26,19 @@ def user_register():
             user = Users.create(nickname,name,password)
             db.session.add(user)
             db.session.commit()
+
+            # Upload of the image to Application
+            image_user = request.files['image']
+
+            if image_user:
+                upload_path = app.config['UPLOAD_PATH']
+                url_image = f'{upload_path}/user/avatar-{user.id}-{time.time()}.jpg'
+                image_user.save(url_image)
+
+                # save url image in to Data Base
+                user.url_image = url_image
+                db.session.add(user)
+                db.session.commit()
 
             return redirect(url_for('index'))
 

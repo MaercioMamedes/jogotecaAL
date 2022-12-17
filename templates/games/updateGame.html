@@ -2,7 +2,7 @@
 {% block content %}
       <form class="formularioJogo" action="{{ url_for('update_game', id_game=game.id) }}" method="post" enctype="multipart/form-data" >
         <figure class="img thumbnail col-md-4 formularioImagem">
-          <img class="img-fluid" src="{{ url_for('image', file_name=game.url_image.split('/')[-1] if game.url_image else 'capa_padrao.jpg') }}">
+          <img class="img-fluid" src="{{ url_for('image', directory='game', file_name=game.url_image.split('/')[-1] if game.url_image else 'capa_padrao.jpg') }}">
           <figcaption>
             <label class="fileContainer">
               Mudar Capa

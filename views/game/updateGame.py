@@ -34,7 +34,7 @@ def update_game(id_game):
         # save new image
         image_game = request.files['image']
         upload_path = app.config['UPLOAD_PATH']
-        url_image = f'{upload_path}/capa-{game.id}-{time.time()}.jpg'
+        url_image = f'{upload_path}/game/capa-{game.id}-{time.time()}.jpg'
         image_game.save(url_image)
 
         # update data game
@@ -43,7 +43,7 @@ def update_game(id_game):
         game.console = console
         game.url_image = url_image
 
-        # save in data base
+        # save in database
         db.session.add(game)
         db.session.commit()
 

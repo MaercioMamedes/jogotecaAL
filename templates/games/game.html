@@ -3,7 +3,7 @@
 
 <section>
     <figure class="img thumbnail col-md-4" >
-        <img src="{{ url_for('image', file_name= game.url_image.split('/')[-1] if game.url_image else 'capa_padrao.jpg') }}">
+        <img src="{{ url_for('image', directory='game',file_name= game.url_image.split('/')[-1] if game.url_image else 'capa_padrao.jpg') }}">
         <figcaption>
             <ul>
                 <li>Nome do Jogo: {{ game.name }}</li>

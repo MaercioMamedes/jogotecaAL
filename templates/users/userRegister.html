@@ -1,8 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
                <h1>Faça seu Cadastro</h1>
-        <form method="POST" action="{{ url_for('user_register') }}">
-            <input type="hidden" name="next-page" value="{{ next_page or url_for('index')}}">
+        <form class="formularioJogo" method="POST" action="{{ url_for('user_register') }}" enctype="multipart/form-data">
+            <figure class="img thumbnail col-md-4 formularioImagem">
+              <img class="img-fluid"  src="{{ url_for('image', directory='default', file_name='capa_padrao.jpg') }}">
+              <figcaption>
+                <label class="fileContainer">
+                  Mudar Avatar
+                  <input type="file" name="image" accept=".jpg">
+                </label>
+              </figcaption>
+            </figure>
+
             <fieldset>
                 {{ form.csrf_token() }}
                 <div class="form-group inputBox">

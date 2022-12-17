@@ -45,7 +45,7 @@ def new_game():
         # Upload of the image to Application
         image_game = request.files['image']
         upload_path = app.config['UPLOAD_PATH']
-        url_image = f'{upload_path}/capa-{game.id}-{time.time()}.jpg'
+        url_image = f'{upload_path}/game/capa-{game.id}-{time.time()}.jpg'
         image_game.save(url_image)
 
         # save url image in to Data Base

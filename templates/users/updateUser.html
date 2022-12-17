@@ -1,11 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-               <h1>Faça seu Cadastro</h1>
-        <form method="POST" action="{{ url_for('user_update') }}">
-            <input type="hidden" name="next-page" value="{{ next_page or url_for('index')}}">
-            <p><label>Nome de usuário:</label> <input class="form-control" type="text" name="name" value="{{data_user.name}}" required></p>
-            <p><label>Nickname:</label> <input class="form-control" type="text" name="user" value="{{ data_user.nickname }}" required></p>
-            <p><label>Senha:</label> <input class="form-control" type="password" name="password" required></p>
-            <p><button class="btn btn-primary" type="submit">salvar</button></p>
+               <h1>Atualizando Cadastro</h1>
+        <form class="formularioJogo" method="POST" action="{{ url_for('user_update') }}" enctype="multipart/form-data">
+            <figure class="img thumbnail col-md-4 formularioImagem">
+              <img class="img-fluid" src="{{ url_for('image', directory=context.directory, file_name=context.file_name) }}">
+              <figcaption>
+                <label class="fileContainer">
+                  Mudar Avatar
+                  <input type="file" name="image" accept=".jpg">
+                </label>
+              </figcaption>
+            </figure>
+
+            <fieldset>
+                {{ form.csrf_token() }}
+                <div class="form-group inputBox">
+                    {{ form.name.label(class="form-label") }}
+                    {{ form.name(class="form-control") }}
+                </div>
+
+                <div class="form-group  inputBox">
+                    {{ form.nickname.label(class="form-label") }}
+                    {{ form.nickname(class="form-control") }}
+                </div>
+
+                <div class="form-group  inputBox">
+                    {{ form.password.label(class="form-label") }}
+                    {{ form.password(class="form-control") }}
+                </div>
+
+                <div class="form-group  inputBox">
+                    {{ form.password_confirm.label(class="form-label") }}
+                    {{ form.password_confirm(class="form-control") }}
+                </div>
+
+                <div class="form-group buttons">
+                    {{ form.save(class="btn btn-primary") }}
+                </div>
+            </fieldset>
         </form>
 {% endblock %}

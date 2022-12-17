@@ -6,6 +6,7 @@ from datetime import datetime
 
 
 class Users(db.Model):
+
     @staticmethod
     def create(nickname_user, name_user, password):
         """Método que cria uma instância de User, e cria um hash para a senha do usuário"""
@@ -31,6 +32,7 @@ class Users(db.Model):
     is_adm = db.Column(db.Boolean())
     password_hash = db.Column(db.String(100), nullable=False)
     quantity_games = db.Column(db.Integer)
+    url_image = db.Column(db.String(150))
     games = db.relationship('Games', secondary=users_games, lazy='subquery',
                             backref=db.backref('users', lazy=True),
                             )
